@@ -21,7 +21,7 @@ const messages = [
 
     "Seu ticket caiu no rio de chocolate da fábrica.",
 
-    "Os esquilos da sala das nozes pegaram seu bilhite",
+    "Os esquilos da sala das nozes pegaram seu bilhete.",
 
     "Seu bilhete foi derretido junto com o chocolate quente.",
 
@@ -31,10 +31,9 @@ const messages = [
 
     "Erro 404: Não encontramos seu bilhete.",
 
-    "O elevador de vidro passou direto",
+    "O elevador de vidro passou direto.",
 
-
-    "Os Oompa Loompas saiu correndo com o seu bilhete.",
+    "Os Oompa Loompas saíram correndo com o seu bilhete.",
 
     "Willy Wonka disse: tente novamente em algum tempo.",
 
@@ -53,11 +52,10 @@ checkBtn.addEventListener("click", () => {
 
     // Vibração
     if (navigator.vibrate) {
-        navigator.vibrate([200, 100, 200]);
-    }
 
-    // Som
-    failSound.play();
+        navigator.vibrate([200, 100, 200]);
+
+    }
 
     // Esconde botão
     checkBtn.style.display = "none";
@@ -65,6 +63,7 @@ checkBtn.addEventListener("click", () => {
     // Mostra loading
     loading.classList.remove("hidden");
 
+    // Inicia loading fake
     startLoading();
 
 });
@@ -103,21 +102,25 @@ function startLoading() {
         textIndex++;
 
         if (textIndex >= texts.length) {
+
             textIndex = 0;
+
         }
 
-        // Finaliza
+        // Finaliza loading
         if (width >= 100) {
 
             clearInterval(interval);
 
             setTimeout(() => {
 
+                // Esconde loading
                 loading.classList.add("hidden");
 
+                // Mostra resultado
                 showResult();
 
-            }, 600);
+            }, 1000);
 
         }
 
@@ -132,6 +135,9 @@ function startLoading() {
 
 function showResult() {
 
+    // Toca som SOMENTE agora
+    failSound.play();
+
     // Mostra resultado
     result.classList.remove("hidden");
 
@@ -141,7 +147,7 @@ function showResult() {
 
     randomMessage.innerText = random;
 
-    // Chuva de partículas
+    // Partículas
     createParticles();
 
 }
@@ -152,9 +158,11 @@ function showResult() {
 ========================= */
 
 const canvas = document.getElementById("canvas");
+
 const ctx = canvas.getContext("2d");
 
 canvas.width = window.innerWidth;
+
 canvas.height = window.innerHeight;
 
 let particles = [];
@@ -166,6 +174,7 @@ function createParticles() {
         particles.push({
 
             x: Math.random() * canvas.width,
+
             y: Math.random() * canvas.height,
 
             size: Math.random() * 5 + 2,
@@ -191,11 +200,13 @@ function animateParticles() {
         ctx.beginPath();
 
         ctx.arc(
+
             particle.x,
             particle.y,
             particle.size,
             0,
             Math.PI * 2
+
         );
 
         ctx.fillStyle = particle.color;
@@ -205,7 +216,9 @@ function animateParticles() {
         particle.y += particle.speedY;
 
         if (particle.y > canvas.height) {
+
             particles.splice(index, 1);
+
         }
 
     });
@@ -222,6 +235,7 @@ function animateParticles() {
 window.addEventListener("resize", () => {
 
     canvas.width = window.innerWidth;
+
     canvas.height = window.innerHeight;
 
 });
