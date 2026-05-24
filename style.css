@@ -1,0 +1,400 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+    radial-gradient(circle at top,
+    #44205f 0%,
+    #1a0d24 40%,
+    #0d0713 100%);
+
+    font-family: 'Cinzel', serif;
+
+    position: relative;
+    color: white;
+}
+
+/* Fundo mágico */
+
+.background{
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    background:
+    linear-gradient(
+        180deg,
+        rgba(255,255,255,.03),
+        transparent
+    );
+
+    z-index: 0;
+}
+
+/* Partículas */
+
+.particles{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.particles::before,
+.particles::after{
+    content: "";
+
+    position: absolute;
+
+    width: 200%;
+    height: 200%;
+
+    background-image:
+    radial-gradient(#ffd700 2px, transparent 2px);
+
+    background-size: 50px 50px;
+
+    animation: particlesMove 20s linear infinite;
+
+    opacity: 0.25;
+}
+
+.particles::after{
+    animation-duration: 35s;
+    opacity: 0.15;
+}
+
+/* Conteúdo */
+
+.container{
+    width: 90%;
+    max-width: 420px;
+
+    text-align: center;
+
+    z-index: 2;
+
+    animation: fadeIn 2s ease;
+}
+
+/* Subtitulo */
+
+.subtitle{
+    font-size: 1.2rem;
+    color: #f5d36b;
+
+    margin-bottom: 15px;
+
+    font-family: 'Great Vibes', cursive;
+
+    animation: glowText 2s infinite alternate;
+}
+
+/* Titulo */
+
+.title{
+    font-size: 2.6rem;
+    line-height: 1.2;
+
+    margin-bottom: 20px;
+
+    text-shadow:
+    0 0 10px rgba(255,215,0,.4),
+    0 0 20px rgba(255,215,0,.2);
+}
+
+.title span{
+    color: #ffd700;
+
+    display: block;
+
+    margin-top: 10px;
+
+    animation: goldGlow 2s infinite alternate;
+}
+
+/* Descrição */
+
+.description{
+    font-size: 1rem;
+    line-height: 1.6;
+
+    color: #e9d9ff;
+
+    margin-bottom: 35px;
+}
+
+/* Botões */
+
+button{
+    border: none;
+    outline: none;
+
+    padding: 16px 28px;
+
+    border-radius: 50px;
+
+    background: linear-gradient(135deg, #ffd700, #ffb700);
+
+    color: #2d163f;
+
+    font-size: 1rem;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+    box-shadow:
+    0 0 15px rgba(255,215,0,.5),
+    0 0 30px rgba(255,215,0,.3);
+
+    font-family: 'Cinzel', serif;
+}
+
+button:hover{
+    transform: scale(1.05);
+
+    box-shadow:
+    0 0 25px rgba(255,215,0,.7),
+    0 0 45px rgba(255,215,0,.5);
+}
+
+/* Loading */
+
+.loading{
+    margin-top: 35px;
+}
+
+#loadingText{
+    margin-bottom: 15px;
+
+    color: #f5d36b;
+
+    font-size: 1rem;
+}
+
+.loading-bar{
+    width: 100%;
+    height: 18px;
+
+    border-radius: 50px;
+
+    overflow: hidden;
+
+    background: rgba(255,255,255,.1);
+
+    backdrop-filter: blur(5px);
+}
+
+.loading-progress{
+    width: 0%;
+    height: 100%;
+
+    border-radius: 50px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #ffd700,
+        #ffcc33
+    );
+
+    transition: .3s;
+}
+
+/* Resultado */
+
+.result{
+    margin-top: 40px;
+}
+
+/* Card troll */
+
+.card{
+    position: relative;
+
+    padding: 30px 20px;
+
+    border-radius: 25px;
+
+    background:
+    linear-gradient(
+        145deg,
+        rgba(255,215,0,.15),
+        rgba(255,255,255,.05)
+    );
+
+    border: 1px solid rgba(255,255,255,.1);
+
+    backdrop-filter: blur(12px);
+
+    box-shadow:
+    0 0 25px rgba(255,215,0,.2);
+
+    animation:
+    shake 0.5s ease,
+    brokenGlow 2s infinite alternate;
+}
+
+.card h2{
+    font-size: 1.8rem;
+
+    margin-bottom: 20px;
+
+    color: #ffd700;
+
+    text-shadow:
+    0 0 10px rgba(255,215,0,.5);
+}
+
+#randomMessage{
+    font-size: 1rem;
+
+    line-height: 1.6;
+
+    margin-bottom: 25px;
+
+    color: #fff3e0;
+}
+
+/* Hidden */
+
+.hidden{
+    display: none;
+}
+
+/* Canvas */
+
+#canvas{
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    z-index: 999;
+}
+
+/* Animações */
+
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes goldGlow{
+    from{
+        text-shadow:
+        0 0 10px rgba(255,215,0,.3);
+    }
+
+    to{
+        text-shadow:
+        0 0 20px rgba(255,215,0,.8),
+        0 0 40px rgba(255,215,0,.5);
+    }
+}
+
+@keyframes glowText{
+    from{
+        opacity: .7;
+    }
+
+    to{
+        opacity: 1;
+    }
+}
+
+@keyframes particlesMove{
+    from{
+        transform: translateY(0);
+    }
+
+    to{
+        transform: translateY(-50px);
+    }
+}
+
+/* Tremida */
+
+@keyframes shake{
+
+    0%{
+        transform: translateX(0);
+    }
+
+    25%{
+        transform: translateX(-5px);
+    }
+
+    50%{
+        transform: translateX(5px);
+    }
+
+    75%{
+        transform: translateX(-5px);
+    }
+
+    100%{
+        transform: translateX(0);
+    }
+
+}
+
+/* Brilho falhando */
+
+@keyframes brokenGlow{
+
+    from{
+        box-shadow:
+        0 0 15px rgba(255,215,0,.2);
+    }
+
+    to{
+        box-shadow:
+        0 0 30px rgba(255,80,80,.25);
+    }
+
+}
+
+/* Responsivo */
+
+@media (max-width: 480px){
+
+    .title{
+        font-size: 2rem;
+    }
+
+    .card h2{
+        font-size: 1.5rem;
+    }
+
+    button{
+        width: 100%;
+    }
+
+}

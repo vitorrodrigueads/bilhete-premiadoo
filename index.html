@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Bilhete Não Premiado</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Fundo animado -->
+    <div class="background"></div>
+
+    <!-- Partículas -->
+    <div class="particles"></div>
+
+    <!-- Conteúdo -->
+    <main class="container">
+
+        <h2 class="subtitle">
+            Fábrica Wonka
+        </h2>
+
+        <h1 class="title">
+            Verificação do
+            <span>Bilhete Dourado</span>
+        </h1>
+
+        <p class="description">
+            Clique abaixo para descobrir se você foi escolhido pela fábrica...
+        </p>
+
+        <!-- Botão -->
+        <button id="checkBtn">
+            Verificar Meu Bilhete
+        </button>
+
+        <!-- Loading -->
+        <section class="loading hidden" id="loading">
+
+            <p id="loadingText">
+                Verificando autenticidade...
+            </p>
+
+            <div class="loading-bar">
+                <div class="loading-progress" id="progress"></div>
+            </div>
+
+        </section>
+
+        <!-- Resultado -->
+        <section class="result hidden" id="result">
+
+            <div class="card">
+
+                <h2>
+                    ❌ Bilhete Rejeitado ❌
+                </h2>
+
+                <p id="randomMessage">
+                    Um Oompa Loompa saiu correndo com seu bilhete.
+                </p>
+
+               
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Áudio -->
+    <audio id="failSound">
+        <source src="audio/fail.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Canvas -->
+    <canvas id="canvas"></canvas>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
